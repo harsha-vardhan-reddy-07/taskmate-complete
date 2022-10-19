@@ -1,13 +1,16 @@
 <?php
+
     include 'database.php';
+
     $id = $_GET['id'];
-    $deleteQuery = "DELETE FROM `crud` WHERE id = $id";
+
+    $deleteQuery = "DELETE FROM `details` WHERE id = '$id'";
     $deleteResult = mysqli_query($conn, $deleteQuery);
 
-    if (!$deleteResult) { 
-        echo "Failed " . mysqli_error($conn);
+    if ($deleteResult){
+        header("location: index.php");
     }
     else{
-        header("location: index.php");
+        echo "Failed" . mysqli_error($conn);
     }
 ?>
